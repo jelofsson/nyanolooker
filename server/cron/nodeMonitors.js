@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const { rpc } = require("../rpc");
 const { nodeCache } = require("../client/cache");
 const { Sentry } = require("../sentry");
-const { rawToRai } = require("../utils");
+const { rawToNyano } = require("../utils");
 const { NODE_MONITORS, EXPIRE_24H } = require("../constants");
 const monitorAliases = require("./monitorAliases.json");
 
@@ -22,7 +22,7 @@ const getConfirmationQuorumPeers = async () => {
 
     peers = rawPeers.map(({ account, ip: rawIp, weight: rawWeight }) => {
       const [, ip] = rawIp.match(NODE_IP_REGEX);
-      const weight = rawToRai(rawWeight);
+      const weight = rawToNyano(rawWeight);
       return {
         account,
         rawIp,

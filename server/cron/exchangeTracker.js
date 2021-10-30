@@ -3,7 +3,7 @@ const MongoClient = require("mongodb").MongoClient;
 const BigNumber = require("bignumber.js");
 const { nodeCache } = require("../client/cache");
 const { Sentry } = require("../sentry");
-const { rawToRai } = require("../utils");
+const { rawToNyano } = require("../utils");
 const { rpc } = require("../rpc");
 const {
   MONGO_URL,
@@ -57,7 +57,7 @@ const getAccountHistory = async (account, latestDate) => {
   const dailyBalances = [
     {
       date: currentDate,
-      balance: rawToRai(balance),
+      balance: rawToNyano(balance),
       account,
     },
   ];
@@ -98,7 +98,7 @@ const getAccountHistory = async (account, latestDate) => {
         if (currentDate !== date) {
           dailyBalances.push({
             date,
-            balance: rawToRai(currentBalance),
+            balance: rawToNyano(currentBalance),
             account,
           });
           currentDate = date;

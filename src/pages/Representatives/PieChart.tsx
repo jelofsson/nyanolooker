@@ -88,7 +88,7 @@ const Representatives: React.FC<Props> = ({
       return;
 
     const aliasSeparator = "|||";
-    // const stake = new BigNumber(rawToRai(onlineStakeTotal)).toNumber();
+    // const stake = new BigNumber(rawToNyano(onlineStakeTotal)).toNumber();
 
     let filteredRepresentatives = isIncludeOfflineRepresentatives
       ? [...principalRepresentatives]

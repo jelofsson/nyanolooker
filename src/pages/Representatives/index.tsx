@@ -22,7 +22,7 @@ import {
 import { ConfirmationQuorumContext } from "api/contexts/ConfirmationQuorum";
 import { DelegatorsContext } from "api/contexts/Delegators";
 import QuestionCircle from "components/QuestionCircle";
-import { rawToRai, TwoToneColors } from "components/utils";
+import { rawToNyano, TwoToneColors } from "components/utils";
 import PieChart from "./PieChart";
 
 const { Title } = Typography;
@@ -78,7 +78,7 @@ const Representatives = () => {
   };
 
   const stake = new BigNumber(
-    rawToRai(
+    rawToNyano(
       !isIncludeOfflineRepresentatives ? onlineStakeTotal : peersStakeTotal,
     ),
   ).toNumber();
@@ -234,7 +234,7 @@ const Representatives = () => {
               <Col xs={24} sm={16}>
                 {" "}
                 <Skeleton {...confirmationQuorumSkeletonProps}>
-                  {new BigNumber(rawToRai(onlineWeightMinimum)).toFormat()} NANO
+                  {new BigNumber(rawToNyano(onlineWeightMinimum)).toFormat()} NANO
                 </Skeleton>
               </Col>
             </Row>
@@ -244,7 +244,7 @@ const Representatives = () => {
               </Col>
               <Col xs={24} sm={16}>
                 <Skeleton {...confirmationQuorumSkeletonProps}>
-                  {new BigNumber(rawToRai(onlineStakeTotal)).toFormat(0)} NANO
+                  {new BigNumber(rawToNyano(onlineStakeTotal)).toFormat(0)} NANO
                 </Skeleton>
               </Col>
             </Row>
@@ -254,7 +254,7 @@ const Representatives = () => {
               </Col>
               <Col xs={24} sm={16}>
                 <Skeleton {...confirmationQuorumSkeletonProps}>
-                  {new BigNumber(rawToRai(peersStakeTotal)).toFormat(0)} NANO
+                  {new BigNumber(rawToNyano(peersStakeTotal)).toFormat(0)} NANO
                 </Skeleton>
               </Col>
             </Row>

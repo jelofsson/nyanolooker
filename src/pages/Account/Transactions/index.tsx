@@ -17,7 +17,7 @@ import { SyncOutlined } from "@ant-design/icons";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import TimeAgo from "timeago-react";
 import BigNumber from "bignumber.js";
-import { rawToRai } from "components/utils";
+import { rawToNyano } from "components/utils";
 import { Colors, TwoToneColors } from "components/utils";
 import { Natricon } from "components/Preferences/Natricons/Natricon";
 import { KnownAccountsContext } from "api/contexts/KnownAccounts";
@@ -224,7 +224,7 @@ const TransactionsTable = ({
                       {["receive", "open"].includes(transactionType) ? "+" : ""}
                       {subtype === "send" ? "-" : ""}
                       {amount && amount !== "0"
-                        ? `${new BigNumber(rawToRai(amount)).toFormat()} NANO`
+                        ? `${new BigNumber(rawToNyano(amount)).toFormat()} NANO`
                         : ""}
                     </Text>
                   </Col>

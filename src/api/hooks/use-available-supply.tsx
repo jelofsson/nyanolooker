@@ -1,6 +1,6 @@
 import * as React from "react";
 import { rpc } from "api/rpc";
-import { rawToRai } from "components/utils";
+import { rawToNyano } from "components/utils";
 
 export interface Return extends Supply {
   isLoading: boolean;
@@ -28,7 +28,7 @@ const useAvailableSupply = (): Return => {
         const rawAvailableSupply = parseInt(json.available);
         setAvailableSupply({
           rawAvailableSupply,
-          availableSupply: rawToRai(rawAvailableSupply),
+          availableSupply: rawToNyano(rawAvailableSupply),
         });
       }
     } catch (err) {

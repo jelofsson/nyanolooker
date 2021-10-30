@@ -116,7 +116,7 @@ const AccountPendingHistory: React.FC<Props> = ({
   }, [blocks, start]);
 
   // const accountPending = accountInfo?.pending
-  //   ? new BigNumber(rawToRai(accountInfo?.pending)).toNumber()
+  //   ? new BigNumber(rawToNyano(accountInfo?.pending)).toNumber()
   //   : 0;
 
   // return accountPending > PENDING_MIN_THRESHOLD ? (

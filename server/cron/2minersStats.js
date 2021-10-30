@@ -6,7 +6,7 @@ const chunk = require("lodash/chunk");
 const uniq = require("lodash/uniq");
 const { rpc } = require("../rpc");
 const { Sentry } = require("../sentry");
-const { rawToRai } = require("../utils");
+const { rawToNyano } = require("../utils");
 const { nodeCache } = require("../client/cache");
 const {
   COINGECKO_MARKET_STATS,
@@ -47,7 +47,7 @@ const getAccountsBalances = async accounts => {
   let totalBalance = 0;
   if (Object.keys(balances).length) {
     Object.values(balances).forEach(({ balance, pending }) => {
-      const accountBalance = rawToRai(
+      const accountBalance = rawToNyano(
         BigNumber(balance).plus(pending).toNumber(),
       );
 
@@ -200,7 +200,7 @@ const do2MinersStats = async () => {
       nodeCache.get(`${COINGECKO_MARKET_STATS}-usd`) || {};
     const totalFiatPayouts =
       Math.round(
-        currentPrice * rawToRai(statsByDate[yesterday].totalPayouts) * 100,
+        currentPrice * rawToNyano(statsByDate[yesterday].totalPayouts) * 100,
       ) / 100;
 
     statsByDate[yesterday].totalFiatPayouts = totalFiatPayouts;
@@ -264,7 +264,7 @@ const do2MinersStats = async () => {
         const uniqPayoutAccounts = uniq(payoutAccounts);
 
         db.collection(MINERS_STATS_COLLECTION).insertOne({
-          totalPayouts: rawToRai(totalPayouts),
+          totalPayouts: rawToNyano(totalPayouts),
           totalAccounts: uniqPayoutAccounts.length,
           totalAccountsHolding,
           totalBalanceHolding,

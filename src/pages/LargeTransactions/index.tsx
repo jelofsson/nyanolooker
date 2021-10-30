@@ -8,7 +8,7 @@ import { DownOutlined } from "@ant-design/icons";
 import useLargeTransactions from "api/hooks/use-large-transactions";
 import TransactionsTable from "pages/Account/Transactions";
 import QuestionCircle from "components/QuestionCircle";
-import { rawToRai } from "components/utils";
+import { rawToNyano } from "components/utils";
 import { useParams, useHistory } from "react-router-dom";
 
 import type { PageParams } from "types/page";
@@ -45,7 +45,7 @@ const LargeTransactions: React.FC = () => {
         ...block,
         amount,
         hash,
-        largest: new BigNumber(rawToRai(amount)).toNumber(),
+        largest: new BigNumber(rawToNyano(amount)).toNumber(),
         latest: timestamp,
         local_timestamp: Math.floor(timestamp / 1000),
       }),

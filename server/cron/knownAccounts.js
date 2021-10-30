@@ -3,7 +3,7 @@ const cron = require("node-cron");
 const uniqBy = require("lodash/uniqBy");
 const BigNumber = require("bignumber.js");
 const { doDelegatedEntitiesCron } = require("./delegatedEntity");
-const { rawToRai } = require("../utils");
+const { rawToNyano } = require("../utils");
 const { rpc } = require("../rpc");
 const { nodeCache } = require("../client/cache");
 const { Sentry } = require("../sentry");
@@ -64,13 +64,13 @@ const doKnownAccountsBalanceCron = async () => {
             account,
             alias,
             balance: balances[account]
-              ? rawToRai(new BigNumber(balances[account].balance || 0))
+              ? rawToNyano(new BigNumber(balances[account].balance || 0))
               : 0,
             pending: balances[account]
-              ? rawToRai(new BigNumber(balances[account].pending || 0))
+              ? rawToNyano(new BigNumber(balances[account].pending || 0))
               : 0,
             total: balances[account]
-              ? rawToRai(
+              ? rawToNyano(
                   new BigNumber(balances[account].balance || 0).plus(
                     balances[account].pending || 0,
                   ),

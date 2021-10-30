@@ -18,7 +18,7 @@ import { BlocksInfoContext } from "api/contexts/BlocksInfo";
 import {
   toBoolean,
   TwoToneColors,
-  rawToRai,
+  rawToNyano,
   timestampToDate,
   isValidAccountAddress,
   isValidBlockHash,
@@ -75,7 +75,7 @@ const BlockDetails: React.FC = () => {
 
   const modifiedTimestamp = Number(blockInfo?.local_timestamp) * 1000;
 
-  const amount = new BigNumber(rawToRai(blockInfo?.amount || 0)).toNumber();
+  const amount = new BigNumber(rawToNyano(blockInfo?.amount || 0)).toNumber();
   const fiatAmount = new BigNumber(amount)
     .times(currentPrice)
     .toFormat(CurrencyDecimal?.[fiat]);
@@ -84,7 +84,7 @@ const BlockDetails: React.FC = () => {
     .dividedBy(btcCurrentPrice)
     .toFormat(12);
 
-  const balance = new BigNumber(rawToRai(blockInfo?.balance || 0)).toNumber();
+  const balance = new BigNumber(rawToNyano(blockInfo?.balance || 0)).toNumber();
   const fiatBalance = new BigNumber(balance)
     .times(currentPrice)
     .toFormat(CurrencyDecimal?.[fiat]);

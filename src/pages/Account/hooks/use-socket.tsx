@@ -1,7 +1,7 @@
 import * as React from "react";
 import BigNumber from "bignumber.js";
 import { PreferencesContext } from "api/contexts/Preferences";
-import { rawToRai } from "components/utils";
+import { rawToNyano } from "components/utils";
 import { usePrevious } from "./use-previous";
 
 import type { Transaction } from "types/transaction";
@@ -111,7 +111,7 @@ const useSocket = ({ account }: { account?: string }) => {
             ]);
             setPendingBalance(prevPendingBalance =>
               new BigNumber(prevPendingBalance)
-                .plus(rawToRai(flatMessage.amount))
+                .plus(rawToNyano(flatMessage.amount))
                 .toNumber(),
             );
           } else if (account === flatMessage.account) {
@@ -135,7 +135,7 @@ const useSocket = ({ account }: { account?: string }) => {
             if (flatMessage.subtype === "receive") {
               setPendingBalance(prevPendingBalance =>
                 new BigNumber(prevPendingBalance)
-                  .minus(rawToRai(flatMessage.amount))
+                  .minus(rawToNyano(flatMessage.amount))
                   .toNumber(),
               );
             }
@@ -147,7 +147,7 @@ const useSocket = ({ account }: { account?: string }) => {
             setBalance(prevBalance =>
               new BigNumber(prevBalance)
                 .plus(
-                  rawToRai(flatMessage.amount) *
+                  rawToNyano(flatMessage.amount) *
                     (flatMessage.subtype === "receive" ? 1 : -1),
                 )
                 .toNumber(),

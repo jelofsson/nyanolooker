@@ -21,7 +21,7 @@ const {
   LARGE_TRANSACTIONS,
   CONFIRMATIONS_PER_SECOND,
 } = require("../constants");
-const { rawToRai } = require("../utils");
+const { rawToNyano } = require("../utils");
 
 let db;
 try {
@@ -130,7 +130,7 @@ cron.schedule("*/10 * * * * *", async () => {
         { $group: { _id: null, totalVolume: { $sum: "$value" } } },
       ])
       .toArray((_err, [{ totalVolume = 0 } = {}] = []) => {
-        nodeCache.set(TOTAL_VOLUME_24H, rawToRai(totalVolume));
+        nodeCache.set(TOTAL_VOLUME_24H, rawToNyano(totalVolume));
       });
 
     db.collection(TOTAL_VOLUME_COLLECTION)
@@ -145,7 +145,7 @@ cron.schedule("*/10 * * * * *", async () => {
         { $group: { _id: null, totalVolume: { $sum: "$value" } } },
       ])
       .toArray((_err, [{ totalVolume = 0 } = {}] = []) => {
-        nodeCache.set(TOTAL_VOLUME_48H, rawToRai(totalVolume));
+        nodeCache.set(TOTAL_VOLUME_48H, rawToNyano(totalVolume));
       });
   } catch (err) {
     console.log("Error", err);

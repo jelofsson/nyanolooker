@@ -19,7 +19,7 @@ const {
   REDIS_RICH_LIST,
   STATUS,
 } = require("../constants");
-const { rawToRai } = require("../utils");
+const { rawToNyano } = require("../utils");
 const { BURN_ACCOUNT } = require("../../src/knownAccounts.json");
 const { rpc } = require("../rpc");
 const readdir = util.promisify(fs.readdir);
@@ -87,8 +87,8 @@ const getKnownExchanges = async () => {
 
   return Object.entries(balances).reduce(
     (acc, [account, { balance: rawBalance, pending: rawPending }]) => {
-      const balance = rawToRai(rawBalance);
-      const pending = rawToRai(rawPending);
+      const balance = rawToNyano(rawBalance);
+      const pending = rawToNyano(rawPending);
       const total = new BigNumber(balance).plus(pending).toNumber();
 
       return {
@@ -151,8 +151,8 @@ const getDistribution = async () => {
       await Promise.all(
         Object.entries(balances).map(
           async ([account, { balance: rawBalance, pending: rawPending }]) => {
-            const balance = rawToRai(rawBalance);
-            const pending = rawToRai(rawPending);
+            const balance = rawToNyano(rawBalance);
+            const pending = rawToNyano(rawPending);
             const total = new BigNumber(balance).plus(pending).toNumber();
 
             if (total < MIN_TOTAL) return;

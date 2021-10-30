@@ -22,7 +22,7 @@ import {
 import { ConfirmationQuorumContext } from "api/contexts/ConfirmationQuorum";
 import LoadingStatistic from "components/LoadingStatistic";
 import QuestionCircle from "components/QuestionCircle";
-import { rawToRai, timestampToDate, TwoToneColors } from "components/utils";
+import { rawToNyano, timestampToDate, TwoToneColors } from "components/utils";
 import AccountHeader from "../Header";
 import ExtraRow from "./ExtraRow";
 import { Sections } from "../.";
@@ -98,7 +98,7 @@ const AccountDetails: React.FC<Props> = ({
     },
   } = React.useContext(ConfirmationQuorumContext);
 
-  let balance = new BigNumber(rawToRai(accountInfo?.balance || 0))
+  let balance = new BigNumber(rawToNyano(accountInfo?.balance || 0))
     .plus(socketBalance)
     .toNumber();
 
@@ -107,7 +107,7 @@ const AccountDetails: React.FC<Props> = ({
     balance = 0;
   }
 
-  const balancePending = new BigNumber(rawToRai(accountInfo?.pending || 0))
+  const balancePending = new BigNumber(rawToNyano(accountInfo?.pending || 0))
     .plus(socketPendingBalance)
     .toFormat(8);
 
@@ -152,7 +152,7 @@ const AccountDetails: React.FC<Props> = ({
 
   const votingWeight = new BigNumber(representativeAccount.weight)
     .times(100)
-    .dividedBy(rawToRai(onlineStakeTotal))
+    .dividedBy(rawToNyano(onlineStakeTotal))
     .toNumber();
 
   return (

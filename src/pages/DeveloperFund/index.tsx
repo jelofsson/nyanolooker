@@ -18,7 +18,7 @@ import useAvailableSupply from "api/hooks/use-available-supply";
 import useDeveloperAccountFund from "api/hooks/use-developer-fund-transactions";
 import QuestionCircle from "components/QuestionCircle";
 import LoadingStatistic from "components/LoadingStatistic";
-import { rawToRai, timestampToDate } from "components/utils";
+import { rawToNyano, timestampToDate } from "components/utils";
 import {
   GENESIS_ACCOUNT,
   DEVELOPER_FUND_ACCOUNTS,
@@ -59,8 +59,8 @@ const DeveloperFund: React.FC = () => {
     Object.entries(accountsBalances?.balances || []).reduce(
       // @ts-ignore
       (accounts, [account, { balance, pending }]) => {
-        const calculatedBalance = new BigNumber(rawToRai(balance || 0))
-          .plus(rawToRai(pending || 0))
+        const calculatedBalance = new BigNumber(rawToNyano(balance || 0))
+          .plus(rawToNyano(pending || 0))
           .toNumber();
 
         totalBalance = new BigNumber(totalBalance)
@@ -97,7 +97,7 @@ const DeveloperFund: React.FC = () => {
   const { amount, local_timestamp = 0, hash: lastTransactionHash } =
     developerFundTransactions?.[0] || {};
   const modifiedTimestamp = Number(local_timestamp) * 1000;
-  const lastTransactionAmount = new BigNumber(rawToRai(amount || 0)).toNumber();
+  const lastTransactionAmount = new BigNumber(rawToNyano(amount || 0)).toNumber();
 
   return (
     <>
