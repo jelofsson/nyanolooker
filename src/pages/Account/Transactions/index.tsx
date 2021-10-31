@@ -224,7 +224,7 @@ const TransactionsTable = ({
                       {["receive", "open"].includes(transactionType) ? "+" : ""}
                       {subtype === "send" ? "-" : ""}
                       {amount && amount !== "0"
-                        ? `${new BigNumber(rawToNyano(amount)).toFormat()} NANO`
+                        ? `${new BigNumber(rawToNyano(amount)).toFormat()} NYANO`
                         : ""}
                     </Text>
                   </Col>

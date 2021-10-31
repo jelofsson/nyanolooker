@@ -170,7 +170,7 @@ const AccountDetails: React.FC<Props> = ({
           <Col xs={24} sm={18} md={20}>
             <LoadingStatistic
               isLoading={skeletonProps.loading}
-              suffix="NANO"
+              suffix="NYANO"
               value={balance >= 1 ? balance : new BigNumber(balance).toFormat()}
             />
             <Skeleton {...skeletonProps}>

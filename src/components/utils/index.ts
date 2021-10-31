@@ -46,7 +46,7 @@ export const refreshActionDelay = async (action: Function) => {
 
 export const rawToNyano = (raw: string | number): number => {
   const value = new BigNumber(raw.toString());
-  return value.shiftedBy(30 * -1 + 9).toNumber();
+  return value.shiftedBy(30 * -1 + 6).toNumber();
 };
 
 export const raiToRaw = (rai: string | number): number => {

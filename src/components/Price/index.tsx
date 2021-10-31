@@ -91,7 +91,7 @@ const CryptocurrencyPrice = ({
       />
       <span style={{ marginRight: "6px" }}>
         {CurrencySymbol?.[fiat]}
-        {new BigNumber(flooredPrice).toFormat(CurrencyDecimal?.[fiat])}
+        {new BigNumber(originalPrice).shiftedBy(-6).toFormat(8)}
         {trailingDecimals ? (
           <span style={{ fontSize: "10px" }}>{trailingDecimals}</span>
         ) : null}
