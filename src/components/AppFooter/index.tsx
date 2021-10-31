@@ -22,6 +22,7 @@ const AppFooter: React.FC = () => {
   return (
     <Footer style={{ textAlign: "center" }}>
       <div>
+        {"Based on "}
         <a
           href="https://github.com/running-coder/nanolooker"
           rel="noopener noreferrer"
@@ -29,8 +30,7 @@ const AppFooter: React.FC = () => {
         >
           <GithubOutlined /> NanoLooker
         </a>{" "}
-        ©{new Date().getFullYear()}{" "}
-        {t("footer.createdBy", { creator: "RunningCoder" })}
+        ©{new Date().getFullYear()}
       </div>
 
       <QRCodeModal

@@ -49,7 +49,7 @@ const AppHeader: React.FC = () => {
             }}
           >
             <Link to="/" style={{ whiteSpace: "nowrap", marginRight: "10px" }}>
-              NanoLooker
+              NyanoScan
             </Link>
           </Col>
           <Col xs={{ span: 24, order: 3 }} md={{ span: 12, order: 2 }}>
@@ -95,12 +95,6 @@ const AppHeader: React.FC = () => {
                   <Link to="/faucets" />
                 </Menu.Item>
               </SubMenu>
-
-              <Menu.Item key="news">
-                <CalendarOutlined />
-                {t("menu.news")}
-                <Link to="/news" />
-              </Menu.Item>
 
               <SubMenu
                 title={

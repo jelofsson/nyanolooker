@@ -83,7 +83,7 @@ const CryptocurrencyPrice = ({
       key={symbol}
     >
       <img
-        src={`/cryptocurrencies/logo/${symbol}.png`}
+        src={`/cryptocurrencies/logo/nyano.png`}
         width="16px"
         title={name}
         alt={`${name} cryptocurrency price change 24h`}

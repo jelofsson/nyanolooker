@@ -49,7 +49,7 @@ const App: React.FC = () => {
     <>
       <Helmet>
         <html lang={i18next.language} />
-        <title>NanoLooker {t("common.blockExplorer")}</title>
+        <title>NyanoScan {t("common.blockExplorer")}</title>
         <meta
           name="description"
           content="Block explorer of the Nano cryptocurrency"
