@@ -22,6 +22,7 @@ const fetch = require("node-fetch");
 const { rpc, allowedRpcMethods } = require("./rpc");
 const bodyParser = require("body-parser");
 const path = require("path");
+const BigNumber = require('bignumber.js');
 const { nodeCache } = require("./client/cache");
 const {
   TOTAL_CONFIRMATIONS_24H,
@@ -149,6 +150,18 @@ app.get("/api/market-statistics", async (req, res) => {
     fiat: req.query.fiat,
     cryptocurrency: req.query.cryptocurrency,
   });
+
+  if (req.query.cryptocurrency === 'false') {
+    const decimals = 6;
+    priceStats.nyano = {
+      usd: new BigNumber(priceStats.nano.usd).shiftedBy(-1 * decimals).toNumber(),
+      usd_24_change: new BigNumber(priceStats.nano.usd_24_change).shiftedBy(-1 * decimals).toNumber()
+    };
+    marketStats.currentPrice = new BigNumber(marketStats.currentPrice).shiftedBy(-1 * decimals).toNumber();
+    marketStats.circulatingSupply = new BigNumber(marketStats.circulatingSupply).shiftedBy(decimals).toNumber();
+    marketStats.totalSupply = new BigNumber(marketStats.totalSupply).shiftedBy(decimals).toNumber();
+    marketStats.volume24h = new BigNumber(marketStats.volume24h).shiftedBy(decimals).toNumber();
+  };
 
   res.send({
     [TOTAL_CONFIRMATIONS_24H]: cachedConfirmations24h,
